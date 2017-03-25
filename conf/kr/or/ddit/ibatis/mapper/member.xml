@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap    
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+    <sqlMap namespace="member">
+    	<typeAlias alias="memberVO" type="kr.or.ddit.vo.MemberVO"/>
+    	<sql id="selectAll">
+    		SELECT *
+    		  FROM BOARD_MEMBER
+    	</sql>
+    	
+    	<select id="memberInfo" resultClass="memberVO" parameterClass="Map">
+    		<include refid="selectAll"/>
+    			 WHERE  MEM_ID = #mem_id#
+    		     AND MEM_PASS = #mem_pass#	
+    	</select>
+    
+    </sqlMap>

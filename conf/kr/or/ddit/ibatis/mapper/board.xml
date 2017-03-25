@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap    
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    <sqlMap namespace="board">
+	<typeAlias alias="boardVO" type="kr.or.ddit.vo.BoardVO"/>
+		<sql id="selectAll">
+			SELECT *
+    		  FROM BOARD
+		</sql>
+		
+		<select id="boardList" resultClass="boardVO">
+			<include refid="selectAll"/>
+			<dynamic prepend="WHERE">
+				<isNotEmpty property="board_title">
+					BOARD_TITLE LIKE  '%'||#board_title#||'%'	
+				</isNotEmpty>
+				<isNotEmpty property="board_writer">
+					BOARD_WRITER LIKE  '%'||#board_writer#||'%'
+				</isNotEmpty>
+				<isNotEmpty property="board_id">
+					BOARD_ID = #board_id#
+				</isNotEmpty>
+				<isNotEmpty property="board_content">
+					BOARD_CONTENT LIKE  '%'||#board_content#||'%'
+				</isNotEmpty>
+			</dynamic>
+			ORDER BY BOARD_DATE DESC
+		</select>
+		
+		<select id="boardInfo" resultClass="BoardVO" parameterClass="Map">
+			<include refid="selectAll"/>
+				WHERE BOARD_ID = #board_id#
+		</select>
+		
+		<update id="updateBoard" parameterClass="BoardVO">
+			UPDATE BOARD
+				SET BOARD_TITLE = #board_title#,
+					BOARD_CONTENT = #board_content#
+			WHERE BOARD_ID = #board_id#
+		</update>
+		
+		<delete id="deleteBoard" parameterClass="map">
+			DELETE FROM BOARD
+				WHERE BOARD_ID = #board_id#
+		</delete>
+		
+		<insert id="insertBoard" parameterClass="BoardVO">
+			INSERT INTO BOARD(
+				BOARD_ID,
+				BOARD_TITLE,
+				BOARD_WRITER,
+				BOARD_DATE,
+				BOARD_CONTENT  )
+			VALUES( SQ_BOARD.NEXTVAL,
+				    #board_title#,
+			        #board_writer#,
+					SYSDATE,
+					#board_content#	
+			)	
+							
+		</insert>
+    </sqlMap>

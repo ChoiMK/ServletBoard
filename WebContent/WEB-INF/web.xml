@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>ServletBoard</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+    
+    <servlet>
+   		<servlet-name>loginForm</servlet-name>
+   		<servlet-class>kr.or.ddit.join.controller.LoginFormServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>loginForm</servlet-name>
+   		<url-pattern>/loginForm</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>loginCheck</servlet-name>
+   		<servlet-class>kr.or.ddit.join.controller.LoginCheckServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>loginCheck</servlet-name>
+   		<url-pattern>/loginCheck</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>boardList</servlet-name>
+   		<servlet-class>kr.or.ddit.board.controller.BoardListServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>boardList</servlet-name>
+   		<url-pattern>/boardList</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>boardView</servlet-name>
+   		<servlet-class>kr.or.ddit.board.controller.BoardViewServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>boardView</servlet-name>
+   		<url-pattern>/boardView</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>updateBoardInfo</servlet-name>
+   		<servlet-class>kr.or.ddit.board.controller.UpdateBoardServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>updateBoardInfo</servlet-name>
+   		<url-pattern>/updateBoardInfo</url-pattern>
+   </servlet-mapping>
+   
+   
+   <servlet>
+   		<servlet-name>deleteBoardInfo</servlet-name>
+   		<servlet-class>kr.or.ddit.board.controller.DeleteBoardServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>deleteBoardInfo</servlet-name>
+   		<url-pattern>/deleteBoardInfo</url-pattern>
+   </servlet-mapping>
+   
+   
+   <servlet>
+   		<servlet-name>writeForm</servlet-name>
+   		<servlet-class>kr.or.ddit.board.controller.WriteFormServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>writeForm</servlet-name>
+   		<url-pattern>/writeForm</url-pattern>
+   </servlet-mapping>
+  	
+  	<servlet>
+   		<servlet-name>insertBoardInfo</servlet-name>
+   		<servlet-class>kr.or.ddit.board.controller.InsertBoardServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>insertBoardInfo</servlet-name>
+   		<url-pattern>/insertBoardInfo</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>boardContent</servlet-name>
+   		<servlet-class>kr.or.ddit.board.controller.BoardContentServlet</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>boardContent</servlet-name>
+   		<url-pattern>/boardContent</url-pattern>
+   </servlet-mapping>
+  	
+  	
+  
+</web-app>
