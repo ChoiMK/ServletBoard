@@ -40,14 +40,13 @@ public class BoardListServlet extends HttpServlet{
 		out.println("<html>                                                                                             ");
 		out.println("<head>                                                                                             ");
 		out.println("<meta charset=\"UTF-8\">                                                                             ");
-		out.println("<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'                                        ");
-		out.println("integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>                               ");
-		out.println("                                                                                                                                           ");
-		out.println("<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css'                                  ");
-		out.println("integrity='sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp' crossorigin='anonymous'>                               ");
-		out.println("                                                                                                                                           ");
-		out.println("<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'                                                          ");
-		out.println("integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa' crossorigin='anonymous'></script>                      ");
+		out.println("<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\" />												");	
+		out.println("<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css\" />       ");
+		out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js\"></script>                                                            ");
+		out.println("<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js\"></script>                                                         ");
+		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.js\"></script>                                                           ");
+		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js\"></script>                  ");
+		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ko.js\"></script>                                                        ");
 		
 		out.println("<style type=\"text/css\">                                                                            ");
 		out.println(".form-control{width: 25%; display:inline-block;}");
@@ -55,16 +54,29 @@ public class BoardListServlet extends HttpServlet{
 		out.println("tr td{text-align: center;}");
 		out.println("#search{width:15%;}");
 		out.println("</style>                                                                                           ");
-		out.println("<script type=\"text/javascript\" src = \"http://code.jquery.com/jquery-latest.js\"></script>           ");
 		out.println("<script type=\"text/javascript\">                                                                    ");
 		out.println("$(function(){                                                                                      ");
-		
 		out.println("	$(\"input[name=search_btn]\").click(function(){                                                       ");
 		out.println("		var condition = $(\"#search\").val();                                                             ");
 		out.println("		var result = $(\"#searchText\").val();                                                            ");
 		out.println(" $(location).attr('href',encodeURI('/ServletBoard/boardList?condition='+condition+'&result='+result));    ");
 		out.println("	});                                                                                                 ");
-		out.println("});                     																	 ");                                                                            
+		
+		out.println("$('#search').change(function(){						");
+		out.println("	if($('#search').val()=='board_date'){             ");
+		out.println("		$('#searchText').datetimepicker({               ");
+		out.println("			locale:'ko',                                ");
+		out.println("			format: 'L',                                ");
+		out.println("		});                                             ");
+		out.println("	}else{                                              ");
+		out.println("		$('#searchText').data('DateTimePicker').destroy();    ");
+		out.println("	}                                                   ");
+		out.println("$('#searchText').val('')");
+		out.println("});                                                    ");
+		
+		
+	    
+	    out.println("  });                      ");
 		out.println("</script>                                                                                          ");
 		out.println("<title>Insert title here</title>                                                                   ");
 		out.println("</head>                                                                                            ");
@@ -93,19 +105,24 @@ public class BoardListServlet extends HttpServlet{
 		out.println("</table>");
 		out.println("<div class=\"container\"  style=\"display: inline-block; text-align: center;\">");
 
-
-
+		out.println("<form class=\"form-inline\">");
 		out.println("      <select id=\"search\" class=\"form-control\">                                                                                     ");
 		out.println("        <option value=\"board_writer\">작성자</option>                                                       ");
 		out.println("     	 <option value=\"board_title\">글제목</option>                                                       ");
 		out.println("     	 <option value=\"board_id\">글번호</option>                                                       ");
 		out.println("     	 <option value=\"board_content\">글내용</option>                                                       ");
+		out.println("        <option value=\"board_date\">작성일자</option>                                               ");
 		out.println("      </select>                                                                                    ");
+		
+		out.println("<div class='input-group' name='datepicker' >");
 		out.println("      <input type=\"text\"  id=\"searchText\" name=\"search\" class='form-control'/>                                                                 ");
+		out.println("</div>");
 		out.println("      <input type=\"button\" name=\"search_btn\" value=\"검색\"  class='btn btn-default'/>                  ");
 		out.println("      <input type=\"button\" value=\"글쓰기\" onclick=\"javascript:location.href='/ServletBoard/writeForm'\" class='btn btn-default'/>                                                ");
+		
+		out.println("</form>");
 		out.println("</div>");
-		out.println("</div>");
+	    
 		out.println("</body>                                                                                            ");
 		out.println("</html>                                                                                            ");
 	

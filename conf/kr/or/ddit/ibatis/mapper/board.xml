@@ -24,6 +24,9 @@
 				<isNotEmpty property="board_content">
 					BOARD_CONTENT LIKE  '%'||#board_content#||'%'
 				</isNotEmpty>
+				<isNotEmpty property="board_date">
+					BOARD_DATE LIKE  TO_CHAR(TO_DATE(#board_date#,'YYYY.MM.DD'),'YY/MM/DD')
+				</isNotEmpty>
 			</dynamic>
 			ORDER BY BOARD_DATE DESC
 		</select>
